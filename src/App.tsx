@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./App.css";
+import Button from "./components/Button";
+import QuestionCard from "./components/QuestionCard";
 
 function App() {
-  function handleClick() {
-    console.log("you clicked me");
-  }
-
   return (
     <>
       <h1>Hello World!</h1>
       <h2>Hello JoC!</h2>
-      <button onClick={handleClick}>Click me!</button>
+      <Button></Button>
+      {/* Can be the start button */}
+      <QuestionCard></QuestionCard>
     </>
   );
 }
