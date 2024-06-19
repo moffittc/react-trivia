@@ -1,18 +1,37 @@
-import { useState } from "react";
 import "./App.css";
-import Button from "./components/Button";
 import QuestionCard from "./components/QuestionCard";
+import Button from "./components/Button";
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [currentIndex, setCurrentIndex] = useState(-1);
+
   return (
     <>
-      <h1>Hello World!</h1>
-      <h2>Hello JoC!</h2>
-      <Button></Button>
-      {/* Can be the start button */}
-      <QuestionCard></QuestionCard>
+      {currentIndex === -1 ? (
+        <>
+          <h1>Trivia Game!</h1>
+          <Button onClick={() => setCurrentIndex(0)}>Start</Button>
+        </>
+      ) : (
+        <>
+          <QuestionCard questionIndex={currentIndex} />
+          <Button
+            onClick={() =>
+              currentIndex > 0 && setCurrentIndex(currentIndex - 1)
+            }
+          >
+            {"<"}
+          </Button>
+          <Button
+            onClick={() =>
+              currentIndex < 19 && setCurrentIndex(currentIndex + 1)
+            }
+          >
+            {">"}
+          </Button>
+        </>
+      )}
     </>
   );
 }
-
-export default App;

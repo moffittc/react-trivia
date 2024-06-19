@@ -1,11 +1,15 @@
-import React from "react";
-
-function handleClick() {
-  console.log("You clicked me!"); // Goes to first card
+interface Props {
+  children: string;
+  color?: string; // "outline-primary" | "primary" | "secondary" | "success" | "danger"
+  onClick: () => void;
 }
 
-const Button = () => {
-  return <button onClick={handleClick}>Click me!</button>;
+const Button = ({ children, onClick, color = "primary" }: Props) => {
+  return (
+    <button className={"btn btn-" + color} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
